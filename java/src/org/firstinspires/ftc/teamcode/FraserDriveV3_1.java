@@ -15,8 +15,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 @TeleOp
 public class FraserDriveV3_1 extends OpMode{
-    double LX, LY, RX, sensitivity = 0.5;
-    DcMotor BL, FL, FR, BR, S1, S2;
+    double LX, LY, RX, sensitivity = 0.5, a, b;
+    DcMotor BL, FL, FR, BR, S1, S2, M1, M2;
     Servo Intake, Arm, Wrist;
     @Override
     public void init(){
@@ -26,6 +26,8 @@ public class FraserDriveV3_1 extends OpMode{
         BR = hardwareMap.dcMotor.get("back_right_motor");
         S1 = hardwareMap.dcMotor.get("left_slide");
         S2 = hardwareMap.dcMotor.get("right_slide");
+        M1 = hardwareMap.dcMotor.get("motor_one");
+        M2 = hardwareMap.dcMotor.get("motor_two");
         S1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         S2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         S1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -78,5 +80,9 @@ public class FraserDriveV3_1 extends OpMode{
             Wrist.setPosition(Wrist.getPosition() + 0.005);
         }
         telemetry.addLine("Intake: " + Intake.getPosition());
+        M1.setPower(gamepad2.left_stick_y);
+        M2.setPower(gamepad2.left_stick_y);
+        telemetry.addLine("Slides: " + S1.getCurrentPosition());
+        
     }
 }
