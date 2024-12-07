@@ -92,15 +92,24 @@ public class FraserAutonRightV2 extends LinearOpMode{
         S1.setPower(0.6);
         S2.setPower(0.6);
         Arm.setPosition(0.1);
+        while (runtime.seconds() < 2){}
+        Intake.setPosition(0);
         MoveUntil(0.5, 1, "forward");
         Arm.setPosition(0.5);
         S1.setPower(-0.2);
         S2.setPower(-0.2);
+        Wrist.setPosition(0);
         runtime.reset();
         while (runtime.seconds() < 4);
         S1.setPower(0);
         S2.setPower(0);
         MoveUntil(0.5, 0.9, "backward");
-        MoveUntil(0.5, 1.5, "right");
+        MoveUntil(0.5, 1.8, "right");
+        MoveUntil(0.5, 1.5, "forward");
+        MoveUntil(0.5, 0.4, "right");
+        MoveUntil(0.5, 2.5, "backward");
+        MoveUntil(0.5, 2.5, "forward");
+        MoveUntil(0.5, 0.4, "right");
+        MoveUntil(0.5, 2.5, "backward");
     }
 }

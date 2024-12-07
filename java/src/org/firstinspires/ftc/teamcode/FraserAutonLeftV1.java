@@ -97,25 +97,34 @@ public class FraserAutonLeftV1 extends LinearOpMode{
         MoveUntil(0.5, 1.1, "right");
         S1.setPower(0);
         S2.setPower(0);
-        MoveUntil(0.5, 1.2, "forward");
-        Arm.setPosition(0.5);
-        Intake.setPosition(0.2);
         runtime.reset();
-        MoveUntil(0.5, 1.2, "backward");
+        while (runtime.seconds() < 1){}
+        MoveUntil(0.5, 0.9, "forward");
+        Arm.setPosition(0.5);
+        runtime.reset();
+        while (runtime.seconds() < 0.5);
+        Intake.setPosition(0.9);
+        runtime.reset();
+        MoveUntil(0.5, 0.85, "backward");
         Turn(0.5, 1.35);
-        MoveUntil(0.5, 0.3, "left");
+        MoveUntil(0.5, 0.15, "right");
         MoveUntil(0.5, 1, "forward");
-        MoveUntil(0.5, 0.3, "left");
+        MoveUntil(0.5, 0.45, "left");
         Turn(0.5, 0.12);
         MoveUntil(0.5, 1.8, "backward");
         MoveUntil(0.5, 1.8, "forward");
         MoveUntil(0.5, 0.8, "left");
         Turn (-0.5, 0.1);
+        Arm.setPosition(0.2);
         MoveUntil(0.5, 1.8, "backward");
         MoveUntil(0.5, 1.8, "forward");
-        Arm.setPosition(0.7);
         Turn(0.5, 0.8);
+        S1.setPower(-0.6);
+        S2.setPower(-0.6);
         MoveUntil(0.5, 1.2, "forward");
         Arm.setPosition(0.5);
+        runtime.reset();
+        S1.setPower(0);
+        S2.setPower(0);
     }
 }

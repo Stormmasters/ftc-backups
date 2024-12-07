@@ -30,6 +30,12 @@ public class LeonardoDriveV3_1 extends OpMode{
         S2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         S1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         S2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        BL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        BR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        S1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        S2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         // This matches the DcMotors to the ones configured in the Control Hub
         FL.setDirection(REVERSE);
         Intake = hardwareMap.get(Servo.class, "claw");
@@ -54,8 +60,8 @@ public class LeonardoDriveV3_1 extends OpMode{
         FR.setPower(LY + LX + RX);
         BR.setPower(LY - LX + RX);
         telemetry.addLine("Hold left trigger and right trigger to raise and lower the slides; Slide position: " + S1.getCurrentPosition());
-        S1.setPower((gamepad2.left_trigger - gamepad2.right_trigger) * -0.4);
-        S2.setPower((gamepad2.left_trigger - gamepad2.right_trigger) * 0.4);
+        S1.setPower((gamepad2.left_trigger - gamepad2.right_trigger) * -0.6);
+        S2.setPower((gamepad2.left_trigger - gamepad2.right_trigger) * 0.6);
         if (gamepad2.dpad_up){
             Arm.setPosition(Arm.getPosition() - 0.005);
         }
@@ -69,16 +75,15 @@ public class LeonardoDriveV3_1 extends OpMode{
             Intake.setPosition(Intake.getPosition() - 0.007);
         }
         else if (gamepad2.right_bumper){
-            Intake.setPosition(Intake.getPosition() + 0.005);
+            Intake.setPosition(Intake.getPosition() + 0.007);
         }
         if (gamepad2.dpad_left){
-            Wrist.setPosition(Wrist.getPosition() - 0.001);
+            Wrist.setPosition(Wrist.getPosition() - 0.0004);
         }
         else if (gamepad2.dpad_right){
-            Wrist.setPosition(Wrist.getPosition() + 0.001);
+            Wrist.setPosition(Wrist.getPosition() + 0.0004);
         }
         telemetry.addLine("Intake: " + Intake.getPosition());
         telemetry.addLine("Slides: " + S1.getCurrentPosition());
-        
     }
 }
