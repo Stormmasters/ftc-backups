@@ -87,6 +87,7 @@ public class FraserAutonLeftV1 extends LinearOpMode{
         Intake = hardwareMap.get(Servo.class, "claw");
         Arm = hardwareMap.get(Servo.class, "shoulder");
         Wrist = hardwareMap.get(Servo.class, "wrist");
+        waitForStart();
         runtime.reset();
         S1.setPower(1);
         Wrist.setPosition(0.06);
@@ -99,7 +100,7 @@ public class FraserAutonLeftV1 extends LinearOpMode{
         S2.setPower(0);
         runtime.reset();
         while (runtime.seconds() < 1){}
-        MoveUntil(0.5, 0.9, "forward");
+        MoveUntil(0.5, 0.75, "forward");
         Arm.setPosition(0.5);
         runtime.reset();
         while (runtime.seconds() < 0.5);
