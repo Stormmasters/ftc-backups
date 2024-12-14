@@ -21,11 +21,11 @@ public class OzShort extends LinearOpMode {
 
         waitForStart();
 
-        back_left_motor.setPower(0.5);
-        back_right_motor.setPower(-0.5);
-        front_left_motor.setPower(-0.5);
-        front_right_motor.setPower(0.5);
+        back_left_motor.setPower(-0.5);
+        back_right_motor.setPower(0.5);
+        front_left_motor.setPower(0.5);
+        front_right_motor.setPower(-0.5);
 
-        sleep(2000);
+        sleep(1500);
     }
 }

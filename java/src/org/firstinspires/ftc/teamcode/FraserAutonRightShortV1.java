@@ -18,7 +18,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous
-public class FraserAutonLeftV1 extends LinearOpMode{
+public class FraserAutonRightShortV1 extends LinearOpMode{
     double LX, LY, RX, sensitivity = 0.5, a, b;
     DcMotor BL, FL, FR, BR, S1, S2, M1, M2;
     Servo Intake, Arm, Wrist;
@@ -89,43 +89,19 @@ public class FraserAutonLeftV1 extends LinearOpMode{
         Wrist = hardwareMap.get(Servo.class, "wrist");
         waitForStart();
         runtime.reset();
-        S1.setPower(1);
         Wrist.setPosition(0.06);
-        S2.setPower(1);
-        Arm.setPosition(0.1);
-        MoveUntil(0.5, 0.5, "right");
-        Turn(-0.5, 0.35);
-        MoveUntil(0.5, 1.1, "right");
-        S1.setPower(0);
-        S2.setPower(0);
+        MoveUntil(0.5, 0.2, "forward");
+        MoveUntil(0.5, 0.8, "right");
+        MoveUntil(0.5, 2, "forward");
+        MoveUntil(0.5, 0.7, "right");
+        MoveUntil(0.5, 2, "backward");
+        MoveUntil(0.5, 2, "forward");
+        MoveUntil(0.5, 0.7, "right");
+        MoveUntil(0.5, 2, "backward");
+        MoveUntil(0.5, 0.6, "forward");
         runtime.reset();
-        while (runtime.seconds() < 1 && !isStopRequested()){}
-        MoveUntil(0.5, 0.95, "forward");
-        Arm.setPosition(0.5);
-        runtime.reset();
-        while (runtime.seconds() < 0.5 && !isStopRequested());
-        Intake.setPosition(0.9);
-        runtime.reset();
-        MoveUntil(0.5, 1.15, "backward");
-        Turn(0.5, 1.35);
-        MoveUntil(0.5, 0.15, "right");
-        MoveUntil(0.5, 1, "forward");
-        MoveUntil(0.5, 0.45, "left");
-        Turn(0.5, 0.12);
-        MoveUntil(0.5, 1.8, "backward");
-        MoveUntil(0.5, 1.8, "forward");
-        MoveUntil(0.5, 0.8, "left");
-        Turn (-0.5, 0.1);
-        Arm.setPosition(0.2);
-        MoveUntil(0.5, 1.8, "backward");
-        MoveUntil(0.5, 1.8, "forward");
-        Turn(0.5, 0.8);
-        S1.setPower(-0.6);
-        S2.setPower(-0.6);
-        MoveUntil(0.5, 1.2, "forward");
-        Arm.setPosition(0.5);
-        runtime.reset();
-        S1.setPower(0);
-        S2.setPower(0);
+        while (runtime.seconds() < 15 && !isStopRequested()){}
+        MoveUntil(0.5, 0.4, "right");
+        MoveUntil(0.5, 0.6, "backward");
     }
 }
