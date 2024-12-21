@@ -17,7 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@Autonomous
+@Autonomous 
 public class FraserAutonLeftV1 extends LinearOpMode{
     double LX, LY, RX, sensitivity = 0.5, a, b;
     DcMotor BL, FL, FR, BR, S1, S2, M1, M2;

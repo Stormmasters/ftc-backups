@@ -17,13 +17,13 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 public class LeonardoDriveV3_1 extends OpMode{
     double LX, LY, RX, sensitivity = 0.5, a, b;
     DcMotor BL, FL, FR, BR, S1, S2, M1, M2;
-    Servo Intake, Arm, Wrist;
+    Servo Intake, Arm, Wrist, HangArm;
     @Override
     public void init(){
-        BL = hardwareMap.dcMotor.get("back_left_motor");
-        FL = hardwareMap.dcMotor.get("front_left_motor");
-        FR = hardwareMap.dcMotor.get("front_right_motor");
-        BR = hardwareMap.dcMotor.get("back_right_motor");
+        BL = hardwareMap.dcMotor.get("leftBack");
+        FL = hardwareMap.dcMotor.get("leftFront");
+        FR = hardwareMap.dcMotor.get("rightFront");
+        BR = hardwareMap.dcMotor.get("rightBack");
         S1 = hardwareMap.dcMotor.get("left_slide");
         S2 = hardwareMap.dcMotor.get("right_slide");
         S1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -41,6 +41,7 @@ public class LeonardoDriveV3_1 extends OpMode{
         Intake = hardwareMap.get(Servo.class, "claw");
         Arm = hardwareMap.get(Servo.class, "shoulder");
         Wrist = hardwareMap.get(Servo.class, "wrist");
+        HangArm = hardwareMap.get(Servo.class, "hangArm");
     }
     @Override
     public void loop(){
@@ -85,5 +86,14 @@ public class LeonardoDriveV3_1 extends OpMode{
         }
         telemetry.addLine("Intake: " + Intake.getPosition());
         telemetry.addLine("Slides: " + S1.getCurrentPosition());
+        if (gamepad2.y){
+            HangArm.setPosition(0.9);
+        }
+        else if (gamepad2.a){
+            HangArm.setPosition(0.1);
+        }
+        else{
+            HangArm.setPosition(0.5);
+        }
     }
 }
