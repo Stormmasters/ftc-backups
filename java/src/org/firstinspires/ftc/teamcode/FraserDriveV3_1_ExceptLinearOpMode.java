@@ -56,8 +56,8 @@ public class FraserDriveV3_1_ExceptLinearOpMode extends LinearOpMode{
             FR.setPower(LY + LX + RX);
             BR.setPower(LY - LX + RX);
             telemetry.addLine("Hold left trigger and right trigger to raise and lower the slides; Slide position: " + S1.getCurrentPosition());
-            S1.setPower((gamepad2.left_trigger - gamepad2.right_trigger) * 0.6);
-            S2.setPower((gamepad2.left_trigger - gamepad2.right_trigger) * 0.6);
+            S1.setPower((gamepad2.left_trigger - gamepad2.right_trigger));
+            S2.setPower((gamepad2.left_trigger - gamepad2.right_trigger));
             if (gamepad2.dpad_up){
                 Arm.setPosition(Arm.getPosition() - 0.005);
             }
@@ -91,8 +91,13 @@ public class FraserDriveV3_1_ExceptLinearOpMode extends LinearOpMode{
                 HangArm.setPosition(0.5);
             }
             telemetry.addLine("Time: " + runtime.seconds());
+            if (gamepad2.x){
+                break;
+            }
         }
         runtime.reset();
+        S1.setPower(1);
+        S2.setPower(1);
         while (runtime.seconds() < 5 && !isStopRequested()){}
         S1.setPower(-0.2);
         S2.setPower(-0.2);
