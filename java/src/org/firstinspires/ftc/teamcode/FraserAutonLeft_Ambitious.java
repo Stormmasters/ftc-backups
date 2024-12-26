@@ -18,7 +18,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous 
-public class FraserAutonLeftV1 extends LinearOpMode{
+public class FraserAutonLeft_Ambitious extends LinearOpMode{
     double LX, LY, RX, sensitivity = 0.5, a, b;
     DcMotor BL, FL, FR, BR, S1, S2, M1, M2;
     Servo Intake, Arm, Wrist;
@@ -88,7 +88,6 @@ public class FraserAutonLeftV1 extends LinearOpMode{
         Arm = hardwareMap.get(Servo.class, "shoulder");
         Wrist = hardwareMap.get(Servo.class, "wrist");
         waitForStart();
-        Intake.setPosition(0);
         runtime.reset();
         S1.setPower(1);
         Wrist.setPosition(0.06);
@@ -107,17 +106,45 @@ public class FraserAutonLeftV1 extends LinearOpMode{
         while (runtime.seconds() < 0.5 && !isStopRequested());
         Intake.setPosition(0.9);
         runtime.reset();
-        MoveUntil(0.5, 0.4, "backward");
-        Turn(0.5, 1.35);
-        MoveUntil(0.5, 0.45, "left");
-        MoveUntil(0.5, 1.5, "forward");
+        while (runtime.seconds() < 0.5 && !isStopRequested());
+        Turn(0.5, 1.31);
         S1.setPower(-0.6);
         S2.setPower(-0.6);
-        Turn(0.5, 0.9);
-        MoveUntil(0.5, 1.2, "forward");
-        Arm.setPosition(0.5);
+        MoveUntil(0.5, 0.22, "left");
         runtime.reset();
+        runtime.reset();
+        while (runtime.seconds() < 2);        
+        S1.setPower(0.14);
+        S2.setPower(0.14);
+        Wrist.setPosition(0.1);
+        runtime.reset();
+        while (runtime.seconds() < 1);
+        Wrist.setPosition(0.15);
+        MoveUntil(0.5, 0.36, "forward");
+        runtime.reset();
+        while (runtime.seconds() < 1);
+        Intake.setPosition(0);
+        runtime.reset();
+        while (runtime.seconds() < 2);
+        Wrist.setPosition(0.06);
+        S1.setPower(1);
+        S2.setPower(1);
+        runtime.reset();
+        while (runtime.seconds() < 1);
+        Wrist.setPosition(0.06);
+        S1.setPower(1);
+        S2.setPower(1);
+        Arm.setPosition(0.1);
+        Turn(-0.5, 1.7);
+        MoveUntil(0.5, 0.38, "forward");
+        Arm.setPosition(0.5);
         S1.setPower(0);
         S2.setPower(0);
+        runtime.reset();
+        while (runtime.seconds() < 1);
+        Intake.setPosition(0.9);
+        while (runtime.seconds() < 2);
+        Wrist.setPosition(0.06);
+        MoveUntil(0.5, 0.2, "forward");
     }
 }

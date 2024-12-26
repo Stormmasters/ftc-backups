@@ -24,8 +24,8 @@ public class LeonardoDriveV3_1 extends OpMode{
         FL = hardwareMap.dcMotor.get("leftFront");
         FR = hardwareMap.dcMotor.get("rightFront");
         BR = hardwareMap.dcMotor.get("rightBack");
-        S1 = hardwareMap.dcMotor.get("left_slide");
-        S2 = hardwareMap.dcMotor.get("right_slide");
+        S1 = hardwareMap.dcMotor.get("par1");
+        S2 = hardwareMap.dcMotor.get("par0");
         S1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         S2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         S1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
