@@ -79,13 +79,17 @@ public class LeonardoDriveV3_1 extends OpMode{
             Intake.setPosition(Intake.getPosition() + 0.007);
         }
         if (gamepad2.dpad_left){
-            Wrist.setPosition(Wrist.getPosition() - 0.0004);
+            Wrist.setPosition(Wrist.getPosition() - 0.002);
         }
         else if (gamepad2.dpad_right){
-            Wrist.setPosition(Wrist.getPosition() + 0.0004);
+            Wrist.setPosition(Wrist.getPosition() + 0.002);
+        }
+        else{
+            Wrist.setPosition(Wrist.getPosition());
         }
         telemetry.addLine("Intake: " + Intake.getPosition());
         telemetry.addLine("Slides: " + S1.getCurrentPosition());
+        telemetry.addLine("Wrist: " + Wrist.getPosition());
         if (gamepad2.y){
             HangArm.setPosition(0.9);
         }

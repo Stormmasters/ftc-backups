@@ -90,8 +90,8 @@ public class FraserAutonLeft_Ambitious extends LinearOpMode{
         waitForStart();
         runtime.reset();
         S1.setPower(1);
-        Wrist.setPosition(0.06);
         S2.setPower(1);
+        Wrist.setPosition(0.5);
         Arm.setPosition(0.1);
         MoveUntil(0.5, 0.5, "right");
         Turn(-0.5, 0.35);
