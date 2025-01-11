@@ -94,5 +94,9 @@ public class FraserAutonRightV2 extends LinearOpMode{
         while (runtime.seconds() < 3){}
         MoveUntil(0.5, 1, "forward");
         Intake.setPosition(0.9);
+        MoveUntil(-0.5, 0.3, "forward");
+        MoveUntil(0.5, 1, "right");
+        MoveUntil(0.5, 1.5, "forward");
+        
     }
 }

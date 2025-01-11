@@ -91,10 +91,10 @@ public class FraserAutonLeft_Ambitious extends LinearOpMode{
         Wrist = hardwareMap.get(Servo.class, "wrist");
         waitForStart();
         runtime.reset();
-        S1.setPower(0.8);
-        S2.setPower(0.8);
+        S1.setPower(0.85);
+        S2.setPower(0.85);
         Wrist.setPosition(0.6);
-        Arm.setPower(0.4);
+        Arm.setPower(-0.4);
         MoveUntil(0.5, 0.5, "right");
         Turn(-0.5, 0.35);
         MoveUntil(0.5, 1.4, "right");
@@ -104,11 +104,11 @@ public class FraserAutonLeft_Ambitious extends LinearOpMode{
         while (runtime.seconds() < 2.5 && !isStopRequested()){}
         MoveUntil(0.5, 0.64, "forward");
         runtime.reset();
-        while (runtime.seconds() < 0.5 && !isStopRequested());
-        Arm.setPower(0.3);
+        while (runtime.seconds() < 0.5 && !isStopRequested()){}
+        Arm.setPower(0);
         Intake.setPosition(0.9);
         runtime.reset();
-        while (runtime.seconds() < 3 && !isStopRequested());
+        while (runtime.seconds() < 3 && !isStopRequested()){}
         S1.setPower(0);
         S2.setPower(0);
         runtime.reset();
@@ -116,6 +116,12 @@ public class FraserAutonLeft_Ambitious extends LinearOpMode{
         MoveUntil(-0.3, 0.3, "forward");
         Turn(0.5, 0.35);
         MoveUntil(0.5, 0.8, "forward");
-        MoveUntil(0.5, 2, "left");
+        runtime.reset();
+        while (runtime.seconds() < 0.5 && !isStopRequested()){}
+        MoveUntil(0.5, 2.3, "left");
+        Arm.setPower(0.4);
+        MoveUntil(0.5, 0.3, "forward");
+        runtime.reset();
+        while (runtime.seconds() < 2 && !isStopRequested()){}
     }
 }
