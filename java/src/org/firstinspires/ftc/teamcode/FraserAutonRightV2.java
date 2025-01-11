@@ -97,6 +97,8 @@ public class FraserAutonRightV2 extends LinearOpMode{
         MoveUntil(-0.5, 0.3, "forward");
         MoveUntil(0.5, 1, "right");
         MoveUntil(0.5, 1.5, "forward");
-        
+        Turn(0.5, 1);
+        MoveUntil(0.5, 2.5, "left");
+        MoveUntil(0.5, 1.5, "forward");
     }
 }

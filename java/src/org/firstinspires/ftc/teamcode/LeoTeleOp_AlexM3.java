@@ -42,6 +42,7 @@ public class LeoTeleOp_AlexM3 extends OpMode {
         Arm = hardwareMap.get(CRServo.class, "shoulder");
         Wrist = hardwareMap.get(Servo.class, "wrist");
         HangArm = hardwareMap.get(Servo.class, "hangArm");
+
         Wrist.setPosition(wristPosition); // Initialize wrist position
     }
 
@@ -72,9 +73,9 @@ public class LeoTeleOp_AlexM3 extends OpMode {
 
         // Arm (shoulder) controls
         if (gamepad2.dpad_up) {
-            Arm.setPower(-0.3);
+            Arm.setPower(-1);
         } else if (gamepad2.dpad_down) {
-            Arm.setPower(0.3);
+            Arm.setPower(1);
         }else {
             Arm.setPower(0);
         }
