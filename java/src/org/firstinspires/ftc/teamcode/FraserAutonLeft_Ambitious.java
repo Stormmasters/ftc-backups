@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
@@ -17,11 +18,12 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@Autonomous 
+@Autonomous
 public class FraserAutonLeft_Ambitious extends LinearOpMode{
     double LX, LY, RX, sensitivity = 0.5, a, b;
     DcMotor BL, FL, FR, BR, S1, S2, M1, M2;
-    Servo Intake, Arm, Wrist;
+    Servo Intake, Wrist;
+    CRServo Arm;
     private ElapsedTime runtime = new ElapsedTime();
     public void MoveUntil(double speed, double time, String direction){
         runtime.reset();
@@ -85,14 +87,14 @@ public class FraserAutonLeft_Ambitious extends LinearOpMode{
         FL.setDirection(REVERSE);
         S1.setDirection(REVERSE);
         Intake = hardwareMap.get(Servo.class, "claw");
-        Arm = hardwareMap.get(Servo.class, "shoulder");
+        Arm = hardwareMap.get(CRServo.class, "shoulder");
         Wrist = hardwareMap.get(Servo.class, "wrist");
         waitForStart();
         runtime.reset();
         S1.setPower(0.8);
         S2.setPower(0.8);
         Wrist.setPosition(0.6);
-        Arm.setPosition(0);
+        Arm.setPower(0.4);
         MoveUntil(0.5, 0.5, "right");
         Turn(-0.5, 0.35);
         MoveUntil(0.5, 1.4, "right");
@@ -103,7 +105,7 @@ public class FraserAutonLeft_Ambitious extends LinearOpMode{
         MoveUntil(0.5, 0.64, "forward");
         runtime.reset();
         while (runtime.seconds() < 0.5 && !isStopRequested());
-        Arm.setPosition(0.5);
+        Arm.setPower(0.3);
         Intake.setPosition(0.9);
         runtime.reset();
         while (runtime.seconds() < 3 && !isStopRequested());

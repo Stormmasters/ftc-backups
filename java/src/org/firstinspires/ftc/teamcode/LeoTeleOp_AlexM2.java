@@ -9,10 +9,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
-public class LeoTeleOp_Alex extends OpMode {
+public class LeoTeleOp_AlexM2 extends OpMode {
     double LX, LY, RX, sensitivity = 0.5, wristPosition = 0.5;
     DcMotor BL, FL, FR, BR, S1, S2;
-    Servo Intake, Wrist, HangArm, Arm;
+    Servo Intake, Wrist, HangArm;
+    CRServo Arm;
 
     @Override
     public void init() {
@@ -38,7 +39,7 @@ public class LeoTeleOp_Alex extends OpMode {
         FL.setDirection(REVERSE);
 
         Intake = hardwareMap.get(Servo.class, "claw");
-        Arm = hardwareMap.get(Servo.class, "shoulder");
+        Arm = hardwareMap.get(CRServo.class, "shoulder");
         Wrist = hardwareMap.get(Servo.class, "wrist");
         HangArm = hardwareMap.get(Servo.class, "hangArm");
 
@@ -72,13 +73,11 @@ public class LeoTeleOp_Alex extends OpMode {
 
         // Arm (shoulder) controls
         if (gamepad2.dpad_up) {
-            Arm.setPosition(Arm.getPosition());
-            Arm.setPosition(Arm.getPosition() - 0.005);
+            Arm.setPower(-0.3);
         } else if (gamepad2.dpad_down) {
-            Arm.setPosition(Arm.getPosition());
-            Arm.setPosition(Arm.getPosition() +0.005);
+            Arm.setPower(0.3);
         }else {
-            Arm.setPosition(Arm.getPosition());
+            Arm.setPower(0);
         }
 
         // Intake controls
@@ -90,9 +89,9 @@ public class LeoTeleOp_Alex extends OpMode {
 
         // Wrist controls
         if (gamepad2.dpad_left) {
-            wristPosition -= 0.001; // Decrease position
+            wristPosition += 0.001; // Decrease position
         } else if (gamepad2.dpad_right) {
-            wristPosition += 0.001; // Increase position
+            wristPosition -= 0.001; // Increase position
         }
 
         // Clamp wrist position to valid range (0.0 to 1.0)
