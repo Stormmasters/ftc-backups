@@ -8,108 +8,82 @@ import com.qualcomm.robotcore.hardware.Servo;
 @Autonomous(name = "ImaadAuton117", group = "Autonomous")
 public class ImaadAuton117 extends LinearOpMode {
 
+    private DcMotor frontLeft = null;
+    private DcMotor frontRight = null;
+    private DcMotor backLeft = null;
+    private DcMotor backRight = null;
+    private DcMotor slideMotor1 = null;
+    private DcMotor slideMotor2 = null;
+    private Servo shoulderServo = null;
+    private Servo wristServo = null;
+    private Servo clawServo = null;
+
     @Override
     public void runOpMode() {
-        RobotHardware robot = new RobotHardware(hardwareMap);
+        // Initialize hardware
+        frontLeft = hardwareMap.get(DcMotor.class, "front_left");
+        frontRight = hardwareMap.get(DcMotor.class, "front_right");
+        backLeft = hardwareMap.get(DcMotor.class, "back_left");
+        backRight = hardwareMap.get(DcMotor.class, "back_right");
+        slideMotor1 = hardwareMap.get(DcMotor.class, "slide_motor_1");
+        slideMotor2 = hardwareMap.get(DcMotor.class, "slide_motor_2");
+        shoulderServo = hardwareMap.get(Servo.class, "shoulder_servo");
+        wristServo = hardwareMap.get(Servo.class, "wrist_servo");
+        clawServo = hardwareMap.get(Servo.class, "claw_servo");
+
+        // Reverse the right motors to ensure correct directional movement
+        frontRight.setDirection(DcMotor.Direction.REVERSE);
+        backRight.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData("Status", "Initialized");
-        telemetry.update();
+
+
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
         if (opModeIsActive()) {
             // Move robot forward for a specified time
-            double forwardPower = 0.25; // Normal speed
+            double forwardPower = 0.5; // Normal speed
             long forwardDuration = 1500; // Approximate duration in milliseconds to move 3.5 feet
 
             // Set motor powers to move forward
-            robot.setDrivePower(forwardPower, forwardPower, forwardPower, forwardPower);
+            frontLeft.setPower(forwardPower);
+            frontRight.setPower(forwardPower);
+            backLeft.setPower(forwardPower);
+            backRight.setPower(forwardPower);
 
-            // Raise the slide motors
-            robot.setSlidePower(0.25);
+            // Simultaneously raise the slide motors
+            slideMotor1.setPower(0.25);
+            slideMotor2.setPower(0.25);
 
-            // Move the shoulder servo up by 35 degrees a wrist servo down by 20 degrees
-            robot.moveShoulder(-75);
-            robot.moveWrist(40);
+            // Move the shoulder servo up by 35 degrees and wrist servo down by 20 degrees
+            double shoulderInitialPosition = 0.5; // Assume middle position
+            double wristInitialPosition = 0.5; // Assume middle position
+            double shoulderTargetPosition = shoulderInitialPosition + (35.0 / 180.0); // Convert degrees to servo range
+            double wristTargetPosition = wristInitialPosition - (20.0 / 180.0); // Convert degrees to servo range
+
+            shoulderServo.setPosition(shoulderTargetPosition);
+            wristServo.setPosition(wristTargetPosition);
 
             // Open the claw servo by 15 degrees
-            robot.moveClaw(10);
+            double clawInitialPosition = 0.5; // Assume middle position
+            double clawTargetPosition = clawInitialPosition + (15.0 / 180.0); // Convert degrees to servo range
+            clawServo.setPosition(clawTargetPosition);
 
             // Sleep for the duration of forward movement
             sleep(forwardDuration);
 
             // Stop all motors
-            robot.stopAllMotors();
+            frontLeft.setPower(0);
+            frontRight.setPower(0);
+            backLeft.setPower(0);
+            backRight.setPower(0);
+            slideMotor1.setPower(0);
+            slideMotor2.setPower(0);
 
             telemetry.addData("Status", "Task Complete");
             telemetry.update();
         }
-    }
-}
-
-class RobotHardware {
-    private DcMotor backLeftMotor;
-    private DcMotor frontLeftMotor;
-    private DcMotor frontRightMotor;
-    private DcMotor backRightMotor;
-    private DcMotor leftSlideMotor;
-    private DcMotor rightSlideMotor;
-    private Servo shoulderServo;
-    private Servo wristServo;
-    private Servo clawServo;
-
-    public RobotHardware(com.qualcomm.robotcore.hardware.HardwareMap hardwareMap) {
-        backLeftMotor = hardwareMap.get(DcMotor.class, "back_left_motor");
-        frontLeftMotor = hardwareMap.get(DcMotor.class, "front_left_motor");
-        frontRightMotor = hardwareMap.get(DcMotor.class, "front_right_motor");
-        backRightMotor = hardwareMap.get(DcMotor.class, "back_right_motor");
-        leftSlideMotor = hardwareMap.get(DcMotor.class, "left_slide");
-        rightSlideMotor = hardwareMap.get(DcMotor.class, "right_slide");
-        shoulderServo = hardwareMap.get(Servo.class, "shoulder");
-        wristServo = hardwareMap.get(Servo.class, "wrist");
-        clawServo = hardwareMap.get(Servo.class, "claw");
-
-        frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        backLeftMotor.setDirection(DcMotor.Direction.FORWARD);
-
-    }
-
-    public void setDrivePower(double backLeftPower, double frontLeftPower, double frontRightPower, double backRightPower) {
-        backLeftMotor.setPower(backLeftPower);
-        frontLeftMotor.setPower(frontLeftPower);
-        frontRightMotor.setPower(frontRightPower);
-        backRightMotor.setPower(backRightPower);
-    }
-
-    public void setSlidePower(double power) {
-        leftSlideMotor.setPower(power);
-        rightSlideMotor.setPower(power);
-    }
-
-    public void moveShoulder(double degrees) {
-        double shoulderPosition = -1 + (degrees / 180.0);
-        shoulderServo.setPosition(shoulderPosition);
-    }
-
-    public void moveWrist(double degrees) {
-        double wristPosition = 1 + (degrees / 180.0);
-        wristServo.setPosition(wristPosition);
-    }
-
-    public void moveClaw(double degrees) {
-        double clawPosition = 0.5 + (degrees / 180.0);
-        clawServo.setPosition(clawPosition);
-    }
-
-    public void stopAllMotors() {
-        backLeftMotor.setPower(0);
-        frontLeftMotor.setPower(0);
-        frontRightMotor.setPower(0);
-        backRightMotor.setPower(0);
-        leftSlideMotor.setPower(0);
-        rightSlideMotor.setPower(0);
     }
 }

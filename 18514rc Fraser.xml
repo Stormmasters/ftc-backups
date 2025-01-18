@@ -13,7 +13,7 @@
             <goBILDA5202SeriesMotor name="rightBack" port="3" />
             <ContinuousRotationServo name="shoulder" port="0" />
             <Servo name="claw" port="1" />
-            <Servo name="wrist" port="2" />
+            <ContinuousRotationServo name="wrist" port="2" />
             <Servo name="hangArm" port="3" />
             <Servo name="clawFraser" port="4" />
             <LynxEmbeddedIMU name="imu" port="0" bus="0" />
