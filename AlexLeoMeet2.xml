@@ -13,6 +13,7 @@
             <Servo name="shoulder" port="0" />
             <Servo name="claw" port="1" />
             <Servo name="wrist" port="2" />
+            <DigitalDevice name="camera" port="0" />
             <LynxEmbeddedIMU name="imu" port="0" bus="0" />
         </LynxModule>
     </LynxUsbDevice>
