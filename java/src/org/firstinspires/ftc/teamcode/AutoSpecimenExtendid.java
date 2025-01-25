@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
 @Autonomous
 public class AutoSpecimenExtendid extends LinearOpMode {
@@ -20,6 +21,7 @@ public class AutoSpecimenExtendid extends LinearOpMode {
     private CRServo wrist;
     private CRServo shoulder;
     private Servo claw;
+//    private ColorSensor distance;
 
     @Override
     public void runOpMode(){
@@ -33,6 +35,7 @@ public class AutoSpecimenExtendid extends LinearOpMode {
         shoulder = hardwareMap.get(CRServo.class,("shoulder"));
         wrist = hardwareMap.get(CRServo.class,("wrist"));
         claw = hardwareMap.get(Servo.class,("claw"));
+//        distance = hardwareMap.get(ColorSensor.class,"distance");
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightSlide.setDirection(DcMotorSimple.Direction.REVERSE);
         leftSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -41,27 +44,39 @@ public class AutoSpecimenExtendid extends LinearOpMode {
 
         waitForStart();
 
-        leftBack.setPower(0.165);
-        rightBack.setPower(0.165);
-        leftFront.setPower(0.165);
-        rightFront.setPower(0.165);
-        leftSlide.setPower(0.45);
-        rightSlide.setPower(0.45);
+//        if
+        leftBack.setPower(0.1545);
+        rightBack.setPower(0.1545);
+        leftFront.setPower(0.1545);
+        rightFront.setPower(0.1545);
+        leftSlide.setPower(0.555);
+        rightSlide.setPower(0.555);
         shoulder.setPower(-0.35);
         wrist.setPower(0.05);
-        claw.setPosition(0.16);
-        sleep(2900);
+        claw.setPosition(0.15);
+        sleep(3000);
+
 
         claw.setPosition(0.15);
-        leftSlide.setPower(-0.4);
-        rightSlide.setPower(-0.4);
-        sleep(1000);
+        leftSlide.setPower(-0.44);
+        rightSlide.setPower(-0.44);
+        shoulder.setPower(0.2);
+        sleep(1300);
 
         leftBack.setPower(-0.35);
         rightBack.setPower(-0.35);
         leftFront.setPower(-0.35);
         rightFront.setPower(-0.35);
-        claw.setPosition(0.4);
+        claw.setPosition(0.6);
+        shoulder.setPower(0);
+        sleep(1000);
+
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftSlide.setPower(-0.3);
+        rightSlide.setPower(-0.3);
         sleep(1000);
 
         leftBack.setPower(-0.285);
@@ -71,34 +86,15 @@ public class AutoSpecimenExtendid extends LinearOpMode {
         leftSlide.setPower(-0.1);
         rightSlide.setPower(-0.1);
         shoulder.setPower(0.25);
-        wrist.setPower(0.3);
+        wrist.setPower(0.05);
         sleep(5000);
 
-        leftBack.setPower(0.26);
-        rightBack.setPower(0.26);
-        leftFront.setPower(0.26);
-        rightFront.setPower(0.26);
+        leftBack.setPower(0.27);
+        rightBack.setPower(0.27);
+        leftFront.setPower(0.27);
+        rightFront.setPower(0.27);
         sleep(700);
 
-        claw.setPosition(0.15);
-        sleep(1000);
-
-        shoulder.setPower(-0.5);
-        wrist.setPower(-0.1);
-        sleep(1500);
-
-        claw.setPosition(0.4);
-        sleep(5000);
-
-        leftBack.setPower(-0.26);
-        rightBack.setPower(-0.26);
-        leftFront.setPower(-0.26);
-        rightFront.setPower(-0.26);
-        sleep(1000);
-
-        shoulder.setPower(0);
-        wrist.setPower(-0.1);
-        sleep(2000);
 
     }
 

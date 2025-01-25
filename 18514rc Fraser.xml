@@ -16,6 +16,8 @@
             <ContinuousRotationServo name="wrist" port="2" />
             <Servo name="hangArm" port="3" />
             <Servo name="clawFraser" port="4" />
+            <RevTouchSensor name="slideT" port="0" />
+            <RevTouchSensor name="armT" port="1" />
             <LynxEmbeddedIMU name="imu" port="0" bus="0" />
         </LynxModule>
     </LynxUsbDevice>
