@@ -34,11 +34,11 @@ public class AutoADrop extends LinearOpMode {
 
         waitForStart();
 
-        // Step 1: Drive forward 24 inches using PID control with 50% power
-        pidDriveForward(24, 0.6);
+        // Step 1: Drive forward 26 inches using PID control with 50% power
+        pidDriveForward(26, 0.5);
 
         // Step 2: Turn slightly left for 13 inches
-        turnLeft(13, 0.6);
+        turnLeft(17, 0.5);
 
         // Step 3: Operate slides, shoulder, and wrist concurrently
         Thread shoulderAndWristTask = new Thread(() -> {
