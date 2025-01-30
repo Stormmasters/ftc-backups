@@ -45,21 +45,21 @@ public class AutoSpecimenExtendid extends LinearOpMode {
         waitForStart();
 
 //        if
-        leftBack.setPower(0.1545);
-        rightBack.setPower(0.1545);
-        leftFront.setPower(0.1545);
-        rightFront.setPower(0.1545);
+        leftBack.setPower(0.1546);
+        rightBack.setPower(0.1546);
+        leftFront.setPower(0.1546);
+        rightFront.setPower(0.1546);
         leftSlide.setPower(0.555);
         rightSlide.setPower(0.555);
         shoulder.setPower(-0.35);
         wrist.setPower(0.05);
         claw.setPosition(0.15);
-        sleep(3000);
+        sleep(2900);
 
 
         claw.setPosition(0.15);
-        leftSlide.setPower(-0.44);
-        rightSlide.setPower(-0.44);
+        leftSlide.setPower(-0.45);
+        rightSlide.setPower(-0.45);
         shoulder.setPower(0.2);
         sleep(1300);
 
@@ -67,7 +67,7 @@ public class AutoSpecimenExtendid extends LinearOpMode {
         rightBack.setPower(-0.35);
         leftFront.setPower(-0.35);
         rightFront.setPower(-0.35);
-        claw.setPosition(0.6);
+        claw.setPosition(0.3);
         shoulder.setPower(0);
         sleep(1000);
 
@@ -85,15 +85,27 @@ public class AutoSpecimenExtendid extends LinearOpMode {
         rightFront.setPower(-0.285);
         leftSlide.setPower(-0.1);
         rightSlide.setPower(-0.1);
-        shoulder.setPower(0.25);
+        shoulder.setPower(0);
         wrist.setPower(0.05);
         sleep(5000);
 
-        leftBack.setPower(0.27);
-        rightBack.setPower(0.27);
-        leftFront.setPower(0.27);
-        rightFront.setPower(0.27);
-        sleep(700);
+        leftBack.setPower(-0.2);
+        rightBack.setPower(-0.2);
+        leftFront.setPower(-0.2);
+        rightFront.setPower(-0.2);
+        sleep(1000);
+
+        // leftBack.setPower(-0.3);
+        // rightBack.setPower(0.3);
+        // leftFront.setPower(-0.3);
+        // rightFront.setPower(-0.3);
+        // sleep(2500);
+
+        // leftBack.setPower(0.3);
+        // rightBack.setPower(0.3);
+        // leftFront.setPower(0.3);
+        // rightFront.setPower(0.3);
+        // sleep(1500);
 
 
     }
