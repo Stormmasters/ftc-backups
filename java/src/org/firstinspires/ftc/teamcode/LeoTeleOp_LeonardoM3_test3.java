@@ -9,8 +9,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
-public class LeoTeleOp_LeonardoM3 extends OpMode {
-    double LX, LY, RX, sensitivity = 0.5, wristPosition = 0.5;
+public class LeoTeleOp_LeonardoM3_test3 extends OpMode {
+    double LX, LY, RX, sensitivity = 0.5, wristPosition = 0;
     DcMotor BL, FL, FR, BR, S1, S2;
     Servo Intake, HangArm;
     CRServo Arm, Wrist;
@@ -80,19 +80,21 @@ public class LeoTeleOp_LeonardoM3 extends OpMode {
 
         // Intake controls
         if (gamepad2.left_bumper) {
-            Intake.setPosition(Intake.getPosition() - 0.03);
+            Intake.setPosition(Intake.getPosition() - 0.05);
         } else if (gamepad2.right_bumper) {
-            Intake.setPosition(Intake.getPosition() + 0.03);
+            Intake.setPosition(Intake.getPosition() + 0.05);
         }
 
         // Wrist controls
-        if (gamepad2.dpad_left) {
-            Wrist.setPower(0.01);
-        } else if (gamepad2.dpad_right){
-            Wrist.setPower(-0.01);
-        }else{
-            Wrist.setPower(0);
+        while (gamepad2.dpad_left) {
+            wristPosition += 0.005;
+            break;
         }
+        while (gamepad2.dpad_right){
+            wristPosition -= 0.005;
+            break;
+        }
+        Wrist.setPower(wristPosition);
 
         // Hang arm controls
         if (gamepad2.y) {
