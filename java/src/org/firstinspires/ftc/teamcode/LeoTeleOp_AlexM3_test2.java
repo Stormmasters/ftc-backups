@@ -79,9 +79,9 @@ public class LeoTeleOp_AlexM3_test2 extends OpMode {
         }
 
         // Intake controls
-        if (gamepad2.left_bumper) {
+        if (gamepad2.left_bumper && Intake.getPosition() >0.19 ) {
             Intake.setPosition(Intake.getPosition() - 0.005);
-        } else if (gamepad2.right_bumper) {
+        } else if (gamepad2.right_bumper && Intake.getPosition() < 0.37) {
             Intake.setPosition(Intake.getPosition() + 0.005);
         }
 
