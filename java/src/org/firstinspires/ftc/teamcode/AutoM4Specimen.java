@@ -38,10 +38,10 @@ public class AutoM4Specimen extends LinearOpMode {
         waitForStart();
 
 //        if
-        leftBack.setPower(0.16);
-        rightBack.setPower(0.16);
-        leftFront.setPower(0.16);
-        rightFront.setPower(0.16);
+        leftBack.setPower(0.17);
+        rightBack.setPower(0.17);
+        leftFront.setPower(0.17);
+        rightFront.setPower(0.17);
         leftSlide.setPower(0.9);
         rightSlide.setPower(0.9);
         shoulder.setPower(-0.35);
